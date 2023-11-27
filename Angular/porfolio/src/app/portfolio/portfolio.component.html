@@ -1,0 +1,12 @@
+<div class="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 portfolio-item" *ngFor="let item of portfolioItems">
+                <img src="{{item.imageUrl}}" class="img-fluid" alt="{{item.title}}">
+                <h3>{{item.title}}</h3>
+                <p>{{item.description}}</p>
+                <!-- Add more item details here -->
+            </div>
+        </div>
+    </div>
+</div>

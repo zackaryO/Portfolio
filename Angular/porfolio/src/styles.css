@@ -1,0 +1,63 @@
+body.high-contrast {
+    background-color: #000;
+    /* Dark background */
+    color: #fff;
+    /* Light text */
+    font-size: 18px;
+    /* Larger font size for better readability */
+}
+
+body.high-contrast a,
+body.high-contrast nav {
+    color: #4DD0E1;
+    /* Bright and distinguishable link color */
+    text-decoration: underline;
+    /* Makes links more recognizable */
+}
+
+body.high-contrast a:hover,
+body.high-contrast a:focus {
+    color: #FFEB3B;
+    /* Distinct color for hover and focus */
+    background-color: #1A237E;
+    /* Contrast background for hover and focus */
+    outline: none;
+    /* Removing default focus outline */
+    border: 2px solid #FFEB3B;
+    /* Custom focus border for better visibility */
+}
+
+/* Specific styles for navbar in high contrast mode */
+body.high-contrast nav {
+    background-color: #263238;
+    /* Dark background for navbar */
+    box-shadow: none;
+    /* Remove shadows for simplicity */
+}
+
+body.high-contrast nav a {
+    color: #FFEB3B;
+    /* Bright color for links */
+    background-color: transparent;
+    /* Remove background for simplicity */
+    border: 2px solid transparent;
+    /* Transparent border to keep layout consistent */
+}
+
+body.high-contrast nav a:hover {
+    background-color: #1A237E;
+    /* Contrast background for hover */
+    border-color: #FFEB3B;
+    /* Visible border on hover */
+}
+
+/* Specific styles for footer in high contrast mode */
+body.high-contrast .footer {
+    background-color: #263238;
+    /* Dark background for footer */
+    /* Other specific footer styles if needed */
+}
+
+body.high-contrast .footer a {
+    /* Styles for footer links in high contrast mode */
+}
