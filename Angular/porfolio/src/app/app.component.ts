@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnDestroy {
-  title = 'portfolio111';
+  title = 'portfolio';
   private themeSubscription: Subscription;
 
   constructor(private themeService: ThemeService) {
