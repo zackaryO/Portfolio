@@ -1,0 +1,27 @@
+{% extends 'myapp/base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education List</title>
+</head>
+<body>
+{% block body %}
+<h2>Education List</h2>
+
+<!-- Link to the Education Creation Form -->
+<a href="{% url 'myapp:education_create' %}">Add New Education</a>
+
+{% for education in education_list %}
+<p>
+    {{ education.school_name }} - {{ education.degree }}
+    <a href="{% url 'myapp:education_update' education.id %}">Edit</a> |
+    <a href="{% url 'myapp:education_delete' education.id %}">Delete</a>
+</p>
+{% empty %}
+<p>No education records found.</p>
+{% endfor %}
+{% endblock %}
+</body>
+</html>

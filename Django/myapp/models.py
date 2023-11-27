@@ -34,6 +34,20 @@ class Experience(models.Model):
         return self.job_title
 
 
+# Skills
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+
+class Skill(models.Model):
+    name = models.CharField(max_length=100)
+    proficiency_level = models.CharField(max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+
 class Resume(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField()
@@ -41,6 +55,7 @@ class Resume(models.Model):
     summary = models.TextField()
     education = models.ManyToManyField(Education)
     experience = models.ManyToManyField(Experience)
+    skills = models.ManyToManyField(Skill)  # Adding ManyToManyField for skills
 
     def __str__(self):
         return self.name
@@ -56,16 +71,6 @@ class ContactInfo(models.Model):
 
     def __str__(self):
         return self.email
-
-
-# Skills
-class Skill(models.Model):
-    name = models.CharField(max_length=100)
-    proficiency_level = models.CharField(max_length=100)
-    category = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
 
 
 # SocialMediaLinks
