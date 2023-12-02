@@ -1,11 +1,17 @@
 <!-- navbar.component.html -->
-<nav>
-    <div class="navbar-title">Zack Otterstrom's Portfolio</div>
-    <ul>
-        <li><a routerLink="/" title="Go to homepage"><i class="fas fa-home"></i> Home</a></li>
-        <li><a routerLink="/about-me" title="Learn more about me"><i class="fas fa-user"></i> About Me</a></li>
-        <li><a routerLink="/portfolio" title="View my portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
-        <li><a routerLink="/resume" title="Download my resume"><i class="fas fa-file-alt"></i> Resume</a></li>
-        <li><a routerLink="/skills" title="Check out my skills"><i class="fas fa-lightbulb"></i> Skills</a></li>
+<nav role="navigation" aria-label="Main navigation">
+    <div class="navbar-title" aria-label="Portfolio title">Zack Otterstrom's Portfolio</div>
+    <div class="hamburger" (click)="toggleMenu()" aria-label="Menu button" role="button" tabindex="0">☰</div>
+    <ul class="navbar-menu" [ngClass]="{'active': menuActive}" aria-label="Primary">
+        <li><a routerLink="/" title="Go to homepage" aria-label="Go to homepage"><i class="fas fa-home"
+                    aria-hidden="true"></i> Home</a></li>
+        <li><a routerLink="/about-me" title="Learn more about me" aria-label="Learn more about me"><i
+                    class="fas fa-user" aria-hidden="true"></i> About Me</a></li>
+        <li><a routerLink="/portfolio" title="View my portfolio" aria-label="View my portfolio"><i
+                    class="fas fa-briefcase" aria-hidden="true"></i> Portfolio</a></li>
+        <li><a routerLink="/resume" title="Download my resume" aria-label="Download my resume"><i
+                    class="fas fa-file-alt" aria-hidden="true"></i> Resume</a></li>
+        <li><a routerLink="/skills" title="Check out my skills" aria-label="Check out my skills"><i
+                    class="fas fa-lightbulb" aria-hidden="true"></i> Skills</a></li>
     </ul>
 </nav>

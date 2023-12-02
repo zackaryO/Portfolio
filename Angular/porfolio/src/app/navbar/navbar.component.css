@@ -11,7 +11,6 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
-    /* Center the links horizontally */
 }
 
 nav ul li {
@@ -33,9 +32,7 @@ nav a {
 
 nav a:hover {
     color: #2196F3;
-    /* Change as per your color scheme */
     transform: scale(1.1);
-    /* Slight scale-up effect */
 }
 
 nav a:hover {
@@ -113,7 +110,6 @@ nav {
     background: #d0d4dc;
     padding: 15px;
     border-radius: 10px;
-    /* other existing styles */
 }
 
 .navbar-title {
@@ -122,10 +118,10 @@ nav {
     color: #1a1a1a;
     font-weight: bold;
     margin-bottom: 20px;
-    background: #e0e5ec;
+    /* background: #e0e5ec; */
     padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+    /* border-radius: 10px; */
+    /* box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff; */
 }
 
 nav a.active {

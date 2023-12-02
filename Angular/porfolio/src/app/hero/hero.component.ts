@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hero',
@@ -11,9 +12,10 @@ export class HeroComponent implements OnInit {
   images: string[] = [];
   activeIndex: number = 0;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle("Home Page");
     this.dataService.getImages().subscribe(
       (data) => {
         this.images = data;

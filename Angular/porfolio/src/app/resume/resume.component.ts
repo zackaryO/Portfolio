@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-resume',
@@ -11,9 +12,10 @@ import html2canvas from 'html2canvas';
 export class ResumeComponent implements OnInit {
   resumeData: any; // Adjust according to your actual data type
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private titleService: Title) { }
 
   ngOnInit() {
+    this.titleService.setTitle("My Resume");
     this.dataService.getResume().subscribe(
       data => {
         this.resumeData = data;
