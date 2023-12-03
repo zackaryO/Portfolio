@@ -1,63 +1,114 @@
-body.high-contrast {
-    background-color: #000;
-    /* Dark background */
-    color: #fff;
-    /* Light text */
-    font-size: 18px;
-    /* Larger font size for better readability */
+body {
+    background-color: #f0f4fc;
+    color: #1a1a1a;
+    font-family: 'Arial', sans-serif;
 }
 
-body.high-contrast a,
-body.high-contrast nav {
-    color: #4DD0E1;
-    /* Bright and distinguishable link color */
-    text-decoration: underline;
-    /* Makes links more recognizable */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
 }
 
-body.high-contrast a:hover,
-body.high-contrast a:focus {
-    color: #FFEB3B;
-    /* Distinct color for hover and focus */
-    background-color: #1A237E;
-    /* Contrast background for hover and focus */
+.button {
+    background-color: #e0e5ec;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 4px 4px 15px #a3b1c6, -4px -4px 15px #ffffff;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.button:hover {
+    box-shadow: inset 2px 2px 8px #a3b1c6, inset -2px -2px 8px #ffffff;
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    background-color: #e0e5ec;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: inset 4px 4px 8px #a3b1c6, inset -4px -4px 8px #ffffff;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
     outline: none;
-    /* Removing default focus outline */
-    border: 2px solid #FFEB3B;
-    /* Custom focus border for better visibility */
+    box-shadow: inset 2px 2px 4px #a3b1c6, inset -2px -2px 4px #ffffff;
 }
 
-/* Specific styles for navbar in high contrast mode */
-body.high-contrast nav {
-    background-color: #263238;
-    /* Dark background for navbar */
-    box-shadow: none;
-    /* Remove shadows for simplicity */
+a {
+    color: #2196F3;
+    text-decoration: none;
 }
 
-body.high-contrast nav a {
-    color: #FFEB3B;
-    /* Bright color for links */
-    background-color: transparent;
-    /* Remove background for simplicity */
-    border: 2px solid transparent;
-    /* Transparent border to keep layout consistent */
+a:hover,
+a:focus {
+    text-decoration: underline;
 }
 
-body.high-contrast nav a:hover {
-    background-color: #1A237E;
-    /* Contrast background for hover */
-    border-color: #FFEB3B;
-    /* Visible border on hover */
+.card {
+    background-color: #e0e5ec;
+    border-radius: 10px;
+    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-/* Specific styles for footer in high contrast mode */
-body.high-contrast .footer {
-    background-color: #263238;
-    /* Dark background for footer */
-    /* Other specific footer styles if needed */
-}
+/* Styles specific for devices with a screen width of 768px or less */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 5px;
+        border-radius: 5px;
+    }
 
-body.high-contrast .footer a {
-    /* Styles for footer links in high contrast mode */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    nav a {
+        font-size: 16px;
+        padding: 8px 10px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .button {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .card {
+        margin: 10px 5px;
+        padding: 15px;
+    }
+
+    .large-image {
+        width: 100%;
+        /* Make images responsive */
+        height: auto;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 12px;
+    }
 }

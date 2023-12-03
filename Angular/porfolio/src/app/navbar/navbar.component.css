@@ -1,6 +1,5 @@
 nav {
-    background: #e0e5ec;
-    /* Light grey background */
+    background: #d0d4dc;
     padding: 10px;
     border-radius: 10px;
 }
@@ -20,9 +19,9 @@ nav ul li {
 
 nav a {
     text-decoration: none;
-    color: #333;
-    font-size: 16px;
-    padding: 8px 15px;
+    color: #1a1a1a;
+    font-size: 18px;
+    padding: 10px 20px;
     border-radius: 8px;
     background: #e0e5ec;
     box-shadow: 8px 8px 15px #a3b1c6,
@@ -31,8 +30,11 @@ nav a {
 }
 
 nav a:hover {
-    box-shadow: inset 8px 8px 15px #a3b1c6,
-        inset -8px -8px 15px #ffffff;
+    box-shadow: inset 4px 4px 10px #a3b1c6, inset -4px -4px 10px #ffffff;
+}
+
+nav a:focus {
+    outline: 2px solid #2196F3;
 }
 
 /* The switch - the box around the slider */
@@ -58,7 +60,7 @@ nav a:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #a3b1c6;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -70,7 +72,7 @@ nav a:hover {
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: #4d4d4d;
     -webkit-transition: .4s;
     transition: .4s;
 }

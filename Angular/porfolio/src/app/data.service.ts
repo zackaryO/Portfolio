@@ -26,4 +26,8 @@ export class DataService {
   getSkills(): Observable<any> {
     return this.http.get(`${this.apiUrl}/skills`);
   }
+
+  getImages(): Observable<string[]> {
+    return this.http.get<string[]>(this.apiUrl);
+  }
 }
