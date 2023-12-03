@@ -1,0 +1,22 @@
+{% extends 'myapp/base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+<h2>{{ project.title }}</h2>
+<img src="{{ project.image.url }}" alt="{{ project.title }}">
+<p>{{ project.description }}</p>
+<a href="{{ project.link }}">Project Link</a>
+<br>
+<a href="{% url 'myapp:project_update' project.id %}" class="btn btn-success">Edit</a>
+<a href="{% url 'myapp:project_delete' project.id %}" class="btn btn-danger">Delete</a>
+{% endblock %}
+</body>
+</html>

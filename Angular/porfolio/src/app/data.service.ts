@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DataService {
 
-  private apiUrl = 'https://api.com'; // Replace with Django API URL
+  private apiUrl = 'http://localhost:8000'; // Replace with Django API URL
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +27,7 @@ export class DataService {
     return this.http.get(`${this.apiUrl}/skills`);
   }
 
-  getImages(): Observable<string[]> {
-    return this.http.get<string[]>(this.apiUrl);
+  getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(`${this.apiUrl}/projects/`);
   }
 }

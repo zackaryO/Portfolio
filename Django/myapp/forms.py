@@ -1,5 +1,5 @@
 from django import forms
-from .models import Education, Experience, Resume, Skill, Category
+from .models import Education, Experience, Resume, Skill, Category, Project
 
 
 class DateInput(forms.DateInput):
@@ -56,3 +56,17 @@ class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = ['name']
+
+
+class ProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'description', 'image', 'link']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'link': forms.URLInput(attrs={'class': 'form-control'}),
+            # 'image' field will use a default FileInput widget
+        }
+
+

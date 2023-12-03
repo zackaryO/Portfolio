@@ -1,0 +1,33 @@
+{% extends 'myapp/base.html' %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+{% block body %}
+<h2>Project List</h2>
+<a href="{% url 'myapp:project_create' %}" class="btn btn-primary">Add New Project</a>
+<div>
+    {% for project in project_list %}
+    <div class="card">
+        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+        <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            <a href="{% url 'myapp:project_detail' project.id %}" class="btn btn-secondary">View Details</a>
+            <a href="{% url 'myapp:project_update' project.id %}" class="btn btn-success">Edit</a>
+            <a href="{% url 'myapp:project_delete' project.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No projects found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+</body>
+</html>

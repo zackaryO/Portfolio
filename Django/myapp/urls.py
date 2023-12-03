@@ -3,7 +3,7 @@ from .views import (education_list, education_create, education_update, educatio
                     experience_list, experience_create, experience_update, experience_delete,
                     resume_detail, resume_create, resume_update, resume_delete, resume_list, skill_list,
                     skill_create, skill_update, skill_delete, category_list, category_create, category_update,
-                    category_delete)
+                    category_delete, project_list, project_create, project_detail, project_update, project_delete)
 
 app_name = 'myapp'
 urlpatterns = [
@@ -37,5 +37,12 @@ urlpatterns = [
     path('categories/create/', category_create, name='category_create'),
     path('categories/<int:pk>/update/', category_update, name='category_update'),
     path('categories/<int:pk>/delete/', category_delete, name='category_delete'),
+
+    # Project
+    path('projects/', project_list, name='project_list'),
+    path('projects/create/', project_create, name='project_create'),
+    path('projects/<int:pk>/', project_detail, name='project_detail'),
+    path('projects/<int:pk>/update/', project_update, name='project_update'),
+    path('projects/<int:pk>/delete/', project_delete, name='project_delete'),
     # Add paths for other models like AboutMe, ContactInfo, SocialMediaLink, Project if needed
 ]
