@@ -1,21 +1,36 @@
-<!-- hero.component.html -->
 <div class="hero">
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" role="region" aria-label="Highlighted Content"
+        tabindex="0" (keydown)="onCarouselKeydown($event)">
+
+        <!-- Carousel Indicators -->
+        <ol class="carousel-indicators" role="tablist">
+            <li *ngFor="let image of images; let i = index" [class.active]="i === activeIndex" role="tab"
+                [attr.aria-controls]="'slide' + i" [attr.aria-selected]="i === activeIndex ? 'true' : 'false'">
+            </li>
+        </ol>
+
+        <!-- Carousel Inner -->
         <div class="carousel-inner">
-            <div *ngFor="let image of images; let isFirst = first" class="carousel-item" [class.active]="isFirst">
-                <img [src]="image" class="d-block w-100" alt="...">
+            <div *ngFor="let image of images; let i = index" class="carousel-item" [class.active]="i === activeIndex"
+                id="'slide' + i">
+                <img [src]="image" class="d-block w-100 carousel-image" alt="Description of image">
             </div>
         </div>
-    </div>
-    <div class="hero-text">
-        <h1>Your Headline Here</h1>
-        <p>Your tagline or summary statement here.</p>
-    </div>
-</div>
 
-<!-- Below the hero section -->
-<div class="cta">
-    <h2>Interested in my work?</h2>
-    <a href="/contact" class="btn btn-primary">Get in Touch</a>
-    <a href="path-to-resume.pdf" download class="btn btn-secondary">Download Resume</a>
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" role="button" aria-label="Previous Slide" (click)="moveCarousel('prev')">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" role="button" aria-label="Next Slide" (click)="moveCarousel('next')">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+        <!-- Hero Text -->
+        <div class="hero-text">
+            <h1>Add Headline Here</h1>
+            <p>Add summary statement here.</p>
+        </div>
+    </div>
 </div>

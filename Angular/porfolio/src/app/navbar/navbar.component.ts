@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ThemeService } from '../theme.service';
+import { ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +7,13 @@ import { ThemeService } from '../theme.service';
 })
 export class NavbarComponent {
   highContrastMode = false;
+  menuActive = false;
 
-  constructor(private themeService: ThemeService) { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
-  toggleHighContrast() {
-    this.highContrastMode = !this.highContrastMode;
-    this.themeService.toggleHighContrast();
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
+    this.cdr.detectChanges(); // Manually trigger change detection
+    console.log('Menu Active:', this.menuActive);
   }
-
 }

@@ -1,6 +1,7 @@
+/* navbar.component.css */
 nav {
     background: #d0d4dc;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
 }
 
@@ -27,6 +28,14 @@ nav a {
     box-shadow: 8px 8px 15px #a3b1c6,
         -8px -8px 15px #ffffff;
     transition: box-shadow 0.3s ease-in-out;
+
+}
+
+nav a:hover {
+    color: #2196F3;
+    /* Change as per your color scheme */
+    transform: scale(1.1);
+    /* Slight scale-up effect */
 }
 
 nav a:hover {
@@ -98,4 +107,51 @@ input:checked+.slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+nav {
+    background: #d0d4dc;
+    padding: 15px;
+    border-radius: 10px;
+    /* other existing styles */
+}
+
+.navbar-title {
+    text-align: center;
+    font-size: 24px;
+    color: #1a1a1a;
+    font-weight: bold;
+    margin-bottom: 20px;
+    background: #e0e5ec;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 8px 8px 15px #a3b1c6, -8px -8px 15px #ffffff;
+}
+
+nav a.active {
+    color: #2196F3;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: block;
+        /* Show on small screens */
+    }
+
+    .navbar-menu {
+        display: none;
+        /* Hide menu initially on small screens */
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        /* Show when active */
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .hamburger {
+        display: none;
+    }
 }

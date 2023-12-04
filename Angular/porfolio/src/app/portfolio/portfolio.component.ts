@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Project } from '../models';
 
 @Component({
   selector: 'app-portfolio',
@@ -7,23 +8,15 @@ import { DataService } from '../data.service';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
-  portfolioItems: any[] = [];
+  portfolioItems: Project[] = [];
 
   constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.getPortfolioItems();
+    this.dataService.getProjects().subscribe((data: Project[]) => {
+      this.portfolioItems = data;
+    });
   }
 
-  getPortfolioItems(): void {
-    this.dataService.getPortfolio().subscribe(
-      (data) => {
-        this.portfolioItems = data;
-      },
-      (error) => {
-        console.error('Error fetching portfolio data:', error);
-        // Handle error here
-      }
-    );
-  }
+
 }

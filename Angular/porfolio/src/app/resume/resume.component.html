@@ -1,1 +1,38 @@
-<p>resume works!</p>
+<div *ngIf="resumeData && resumeData.length">
+    <div id="resumeContent" class="resume">
+        <h1 class="resume-header">{{ resumeData[0].name }}</h1>
+        <div class="resume-contact">
+            <p>{{ resumeData[0].email }}</p>
+            <p>{{ resumeData[0].phone }}</p>
+        </div>
+        <div class="resume-section">
+            <h2>Summary</h2>
+            <p>{{ resumeData[0].summary }}</p>
+        </div>
+        <div class="resume-section">
+            <h2>Education</h2>
+            <ul>
+                <li *ngFor="let edu of resumeData[0].education">
+                    <strong>{{ edu.school_name }}</strong> - {{ edu.degree }}
+                </li>
+            </ul>
+        </div>
+        <div class="resume-section">
+            <h2>Experience</h2>
+            <ul>
+                <li *ngFor="let exp of resumeData[0].experience">
+                    <strong>{{ exp.job_title }}</strong>, {{ exp.company_name }}
+                </li>
+            </ul>
+        </div>
+        <div class="resume-section">
+            <h2>Skills</h2>
+            <ul>
+                <li *ngFor="let skill of resumeData[0].skills">
+                    {{ skill.name }} (Proficiency: {{ skill.proficiency_level }})
+                </li>
+            </ul>
+        </div>
+    </div>
+    <button class="download-button" (click)="downloadPdf()">Download Resume as PDF</button>
+</div>

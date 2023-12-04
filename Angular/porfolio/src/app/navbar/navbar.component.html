@@ -1,15 +1,11 @@
+<!-- navbar.component.html -->
 <nav>
-    <!-- <label class="switch">
-        <input type="checkbox" id="highContrastToggle" (change)="toggleHighContrast()">
-        <span class="slider round"></span>
-    </label>
-    <span aria-live="polite">{{ highContrastMode ? 'High Contrast Mode: On' : 'High Contrast Mode: Off' }}</span> -->
-
-
+    <div class="navbar-title">Zack Otterstrom's Portfolio</div>
     <ul>
-        <li><a routerLink="/about-me"><i class="fas fa-user"></i> About Me</a></li>
-        <li><a routerLink="/portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
-        <li><a routerLink="/resume"><i class="fas fa-file-alt"></i> Resume</a></li>
-        <li><a routerLink="/skills"><i class="fas fa-lightbulb"></i> Skills</a></li>
+        <li><a routerLink="/" title="Go to homepage"><i class="fas fa-home"></i> Home</a></li>
+        <li><a routerLink="/about-me" title="Learn more about me"><i class="fas fa-user"></i> About Me</a></li>
+        <li><a routerLink="/portfolio" title="View my portfolio"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+        <li><a routerLink="/resume" title="Download my resume"><i class="fas fa-file-alt"></i> Resume</a></li>
+        <li><a routerLink="/skills" title="Check out my skills"><i class="fas fa-lightbulb"></i> Skills</a></li>
     </ul>
 </nav>

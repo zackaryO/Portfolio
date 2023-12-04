@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AboutMe, Education, Experience, Resume, ContactInfo, Skill, SocialMediaLink, Project
+from .models import AboutMe, Education, Experience, Resume, ContactInfo, Skill, SocialMediaLink, Project, Category
 
 
 class AboutMeSerializer(serializers.ModelSerializer):
@@ -51,4 +51,10 @@ class SocialMediaLinkSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
+        fields = '__all__'
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
         fields = '__all__'

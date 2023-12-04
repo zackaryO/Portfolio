@@ -1,27 +1,56 @@
+/* hero.component.css */
 .hero {
     position: relative;
     text-align: center;
     color: white;
-    margin-top: 80px;
-    margin-bottom: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.hero .carousel-item {
-    height: 90vh;
-    background: #000;
+.hero .carousel-inner {
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    background: #e0e0e0;
 }
+
 
 .hero img {
-    height: 100%;
-    object-fit: cover;
+    border-radius: 15px;
+    /* Rounded corners for card effect */
+    box-shadow: 8px 8px 15px #a3a3a3, -8px -8px 15px #ffffff;
+    /* Shadow effect */
+    max-height: 300px;
+    /* Reduced size */
+    object-fit: contain;
+    width: auto;
+    /* Add this to maintain the aspect ratio */
 }
 
 .hero-text {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 20%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.5);
-    /* Optional */
+    color: #ffffff;
+    /* Ensure text is easily readable */
     padding: 20px;
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 4px 4px 10px #a3a3a3, -4px -4px 10px #ffffff;
+    /* Shadow for neomorphism */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+    /* Make carousel control icons white for visibility */
+}
+
+/* Accessibility: High Contrast Text */
+.hero-text h1,
+.hero-text p {
+    text-shadow: 2px 2px 4px #000000;
+    /* Text shadow for readability */
 }

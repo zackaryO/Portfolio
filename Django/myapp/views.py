@@ -7,7 +7,7 @@ from .models import AboutMe, Education, Experience, Resume, ContactInfo, Skill, 
 from .forms import EducationForm, ExperienceForm, ResumeForm, SkillForm, CategoryForm, ProjectForm
 from .serializers import (AboutMeSerializer, EducationSerializer, ExperienceSerializer,
                           ResumeSerializer, ContactInfoSerializer, SkillSerializer,
-                          SocialMediaLinkSerializer, ProjectSerializer)
+                          SocialMediaLinkSerializer, ProjectSerializer, CategorySerializer)
 
 
 class ReadOnlyForAngularMixin:
@@ -60,6 +60,11 @@ class SocialMediaLinkViewSet(ReadOnlyForAngularMixin, viewsets.ModelViewSet):
 class ProjectViewSet(ReadOnlyForAngularMixin, viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+
+
+class CategoryViewSet(ReadOnlyForAngularMixin, viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 def education_list(request):
@@ -198,7 +203,7 @@ def skill_delete(request, pk):
 
 def category_list(request):
     categories = Category.objects.all()
-    return render(request, 'myapp/category_list.html', {'categories': categories})
+    return render(request, 'myapp/category_list.html', {'category_list': categories})
 
 
 def category_create(request):
@@ -234,7 +239,7 @@ def category_delete(request, pk):
 
 def project_list(request):
     projects = Project.objects.all()
-    return render(request, 'myapp/project_list.html', {'projects': projects})
+    return render(request, 'myapp/project_list.html', {'project_list': projects})
 
 
 def project_create(request):
@@ -250,7 +255,7 @@ def project_create(request):
 
 def project_detail(request, pk):
     project = get_object_or_404(Project, pk=pk)
-    return render(request, 'myapp/project_detail.html', {'project': project})
+    return render(request, 'myapp/project_detail.html', {'project_list': project})
 
 
 def project_update(request, pk):
@@ -269,5 +274,5 @@ def project_delete(request, pk):
     project = get_object_or_404(Project, pk=pk)
     if request.method == 'POST':
         project.delete()
-        return redirect('project_list')
+        return redirect('myapp:project_list')  # Include the namespace if you have one
     return render(request, 'myapp/project_confirm_delete.html', {'object': project})
