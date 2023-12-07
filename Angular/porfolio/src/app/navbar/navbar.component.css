@@ -11,6 +11,7 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
+    /* Center the links horizontally */
 }
 
 nav ul li {
@@ -32,7 +33,9 @@ nav a {
 
 nav a:hover {
     color: #2196F3;
+    /* Change as per your color scheme */
     transform: scale(1.1);
+    /* Slight scale-up effect */
 }
 
 nav a:hover {

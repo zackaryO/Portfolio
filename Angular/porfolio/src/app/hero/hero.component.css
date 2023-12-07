@@ -17,14 +17,10 @@
 
 .hero img {
     border-radius: 15px;
-    /* Rounded corners for card effect */
     box-shadow: 8px 8px 15px #a3a3a3, -8px -8px 15px #ffffff;
-    /* Shadow effect */
     max-height: 300px;
-    /* Reduced size */
     object-fit: contain;
     width: auto;
-    /* Add this to maintain the aspect ratio */
 }
 
 .hero-text {
@@ -33,13 +29,10 @@
     left: 20%;
     transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.5);
-    color: #ffffff;
-    /* Ensure text is easily readable */
+    /* color: #ffffff; */
     padding: 20px;
     border-radius: 15px;
-    /* Rounded corners */
     box-shadow: 4px 4px 10px #a3a3a3, -4px -4px 10px #ffffff;
-    /* Shadow for neomorphism */
 }
 
 .carousel-control-prev-icon,
