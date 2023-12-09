@@ -3,7 +3,8 @@ from .views import (education_list, education_create, education_update, educatio
                     experience_list, experience_create, experience_update, experience_delete,
                     resume_detail, resume_create, resume_update, resume_delete, resume_list, skill_list,
                     skill_create, skill_update, skill_delete, category_list, category_create, category_update,
-                    category_delete, project_list, project_create, project_detail, project_update, project_delete)
+                    category_delete, project_list, project_create, project_detail, project_update, project_delete,
+                    download_resume)
 
 app_name = 'myapp'
 urlpatterns = [
@@ -23,6 +24,7 @@ urlpatterns = [
     path('resumes/', resume_list, name='resume_list'),
     path('resumes/<int:pk>/', resume_detail, name='resume_detail'),
     path('resumes/create/', resume_create, name='resume_create'),
+    path('resumes/<int:pk>/download/', download_resume, name='download_resume'),
     path('resumes/<int:pk>/update/', resume_update, name='resume_update'),
     path('resumes/<int:pk>/delete/', resume_delete, name='resume_delete'),
 

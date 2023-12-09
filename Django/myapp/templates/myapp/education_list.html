@@ -4,24 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Education List</title>
 </head>
 <body>
 {% block body %}
-<h2>Education List</h2>
+<div class="container mt-4">
+    <h2 class="mb-4">Education List</h2>
 
-<!-- Link to the Education Creation Form -->
-<a href="{% url 'myapp:education_create' %}">Add New Education</a>
+    <a href="{% url 'myapp:education_create' %}" class="btn btn-primary mb-3">Add New Education</a>
 
-{% for education in education_list %}
-<p>
-    {{ education.school_name }} - {{ education.degree }}
-    <a href="{% url 'myapp:education_update' education.id %}">Edit</a> |
-    <a href="{% url 'myapp:education_delete' education.id %}">Delete</a>
-</p>
-{% empty %}
-<p>No education records found.</p>
-{% endfor %}
+    {% for education in education_list %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ education.school_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ education.degree }}</h6>
+            <a href="{% url 'myapp:education_update' education.id %}" class="btn btn-success">Edit</a>
+            <a href="{% url 'myapp:education_delete' education.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-muted">No education records found.</p>
+    {% endfor %}
+</div>
 {% endblock %}
 </body>
 </html>

@@ -12,12 +12,23 @@
 </head>
 <body>
 {% block body %}
-<h2>Experience List</h2>
-<a href="{% url 'myapp:experience_create' %}">Add Experience</a>
-{% for experience in experience_list %}
-<p>{{ experience.job_title }} at {{ experience.company_name }}</p>
-<!-- Add links/buttons for update and delete -->
-{% endfor %}
+<div class="container mt-4">
+    <h2 class="mb-4">Experience List</h2>
+    <a href="{% url 'myapp:experience_create' %}" class="btn btn-primary mb-3">Add Experience</a>
+
+    {% for experience in experience_list %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ experience.job_title }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ experience.company_name }}</h6>
+            <a href="{% url 'myapp:experience_update' experience.id %}" class="btn btn-success">Edit</a>
+            <a href="{% url 'myapp:experience_delete' experience.id %}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <p>No experiences found.</p>
+    {% endfor %}
+</div>
 {% endblock %}
 </body>
 </html>

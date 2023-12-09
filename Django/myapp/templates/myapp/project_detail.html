@@ -6,27 +6,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Project Details</title>
 </head>
 <body>
 {% block body %}
-<h2>Project List</h2>
-<a href="{% url 'myapp:project_create' %}" class="btn btn-primary">Add New Project</a>
-<div>
-    {% for project in project_list %}
-    <div class="card project-card">
-        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+<div class="container mt-4">
+    <h2 class="card-title">{{ project.title }}</h2>
+
+    <div class="card mb-3">
+        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="card-img-top" style="width: 40%;>
         <div class="card-body">
-            <h5 class="card-title">{{ project.title }}</h5>
+            <h5 class="mb-3">Project Details</h5>
             <p class="card-text">{{ project.description }}</p>
-            <a href="{% url 'myapp:project_detail' project.id %}" class="btn btn-secondary">View Details</a>
-            <a href="{% url 'myapp:project_update' project.id %}" class="btn btn-success">Edit</a>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'myapp:project_update' project.id %}" class="btn btn-success me-2">Edit</a>
             <a href="{% url 'myapp:project_delete' project.id %}" class="btn btn-danger">Delete</a>
         </div>
     </div>
-    {% empty %}
-    <p>No projects found.</p>
-    {% endfor %}
+    <a href="{% url 'myapp:project_create' %}" class="btn btn-primary">Add New Project</a>
 </div>
 {% endblock %}
 </body>

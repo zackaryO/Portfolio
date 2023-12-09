@@ -51,17 +51,16 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden; /* Prevents content from spilling outside */
 }
 
-.project-image {
-    width: 30% !important; /* Adjust as needed */
-    max-width: 300px !important; /* Maximum width */
-    max-height: 200px !important;
-    object-fit: cover !important;
+.p-image {
+    width: 100%; /* Or any other percentage */
+    /*height: auto;*/
+    /*object-fit: cover !important;*/
     border-radius: 5px !important; /* Rounded corners */
 }
 
 
-.card .project-image {
-    width: 50%;
-    max-height: 200px;
-    object-fit: cover;
-}
+/*.card .project-image {*/
+/*    width: 50%;*/
+/*    max-height: 200px;*/
+/*    object-fit: cover;*/
+/*}*/

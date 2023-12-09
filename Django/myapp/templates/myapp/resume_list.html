@@ -21,6 +21,8 @@
             <a href="{% url 'myapp:resume_detail' resume.pk %}" class="btn btn-secondary">View Details</a>
             <a href="{% url 'myapp:resume_update' resume.pk %}" class="btn btn-success">Edit</a>
             <a href="{% url 'myapp:resume_delete' resume.pk %}" class="btn btn-danger">Delete</a>
+            <!-- Download as PDF Button -->
+            <a href="{% url 'myapp:download_resume' resume.pk %}" class="btn btn-primary">Download as PDF</a>
         </div>
     </div>
     {% empty %}

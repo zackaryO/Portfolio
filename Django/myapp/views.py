@@ -1,7 +1,13 @@
+import os
+
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.views.decorators.http import require_POST
+import pdfkit
 from rest_framework import viewsets, permissions
 from rest_framework.generics import get_object_or_404
+from django.conf import settings
 
 from .models import AboutMe, Education, Experience, Resume, ContactInfo, Skill, SocialMediaLink, Project, Category
 from .forms import EducationForm, ExperienceForm, ResumeForm, SkillForm, CategoryForm, ProjectForm
@@ -158,6 +164,27 @@ def resume_update(request, pk):
     return render(request, 'myapp/resume_form.html', {'form': form})
 
 
+def download_resume(request, pk):
+    resume = get_object_or_404(Resume, pk=pk)
+    html_string = render_to_string('myapp/resume_detail.html', {'resume': resume})
+
+    options = {
+        'no-images': '',
+        'no-external-links': '',
+        'page-size': 'Letter',
+        'encoding': 'UTF-8',
+        'dpi': 400
+    }
+    path_to_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+
+    pdf = pdfkit.from_string(html_string, False, configuration=config)
+
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="resume.pdf"'
+    return response
+
+
 @require_POST
 def resume_delete(request, pk):
     resume = get_object_or_404(Resume, pk=pk)
@@ -255,7 +282,7 @@ def project_create(request):
 
 def project_detail(request, pk):
     project = get_object_or_404(Project, pk=pk)
-    return render(request, 'myapp/project_detail.html', {'project_list': project})
+    return render(request, 'myapp/project_detail.html', {'project': project})
 
 
 def project_update(request, pk):
@@ -264,7 +291,7 @@ def project_update(request, pk):
         form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             form.save()
-            return redirect('project_detail', pk=project.pk)
+            return redirect('myapp:project_detail', pk=project.pk)
     else:
         form = ProjectForm(instance=project)
     return render(request, 'myapp/project_form.html', {'form': form})
