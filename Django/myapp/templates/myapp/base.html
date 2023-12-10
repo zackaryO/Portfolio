@@ -18,7 +18,12 @@
         <a href="{% url 'myapp:experience_list' %}" class="nav-item nav-link link-warning mr-2">Experience</a>
         <a href="{% url 'myapp:skill_list' %}" class="nav-item nav-link link-warning mr-2">Skills</a>
         <a href="{% url 'myapp:project_list' %}" class="nav-item nav-link link-warning mr-2">Projects</a>
-
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+        <a href="{% url 'profile' %}" class="nav-item nav-link">Profile</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
+        {% endif %}
     </div>
 </nav>
 {% if messages %}

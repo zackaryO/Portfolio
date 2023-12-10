@@ -1,5 +1,6 @@
 import os
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
@@ -32,7 +33,6 @@ class AboutMeViewSet(ReadOnlyForAngularMixin, viewsets.ModelViewSet):
     serializer_class = AboutMeSerializer
 
 
-# Apply the same pattern for other viewsets
 class EducationViewSet(ReadOnlyForAngularMixin, viewsets.ModelViewSet):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
@@ -73,11 +73,13 @@ class CategoryViewSet(ReadOnlyForAngularMixin, viewsets.ModelViewSet):
     serializer_class = CategorySerializer
 
 
+@login_required
 def education_list(request):
     educations = Education.objects.all()
     return render(request, 'myapp/education_list.html', {'education_list': educations})
 
 
+@login_required
 def education_create(request):
     form = EducationForm(request.POST or None)
     if form.is_valid():
@@ -86,6 +88,7 @@ def education_create(request):
     return render(request, 'myapp/education_form.html', {'form': form})
 
 
+@login_required
 def education_update(request, pk):
     education = get_object_or_404(Education, pk=pk)
     form = EducationForm(request.POST or None, instance=education)
@@ -95,6 +98,7 @@ def education_update(request, pk):
     return render(request, 'myapp/education_form.html', {'form': form})
 
 
+@login_required
 def education_delete(request, pk):
     education = get_object_or_404(Education, pk=pk)
     if request.method == 'POST':
@@ -103,12 +107,14 @@ def education_delete(request, pk):
     return render(request, 'myapp/education_confirm_delete.html', {'object': education})
 
 
+@login_required
 # Experience Views
 def experience_list(request):
     experiences = Experience.objects.all()
     return render(request, 'myapp/experience_list.html', {'experience_list': experiences})
 
 
+@login_required
 def experience_create(request):
     form = ExperienceForm(request.POST or None)
     if form.is_valid():
@@ -117,6 +123,7 @@ def experience_create(request):
     return render(request, 'myapp/experience_form.html', {'form': form})
 
 
+@login_required
 def experience_update(request, pk):
     experience = get_object_or_404(Experience, pk=pk)
     form = ExperienceForm(request.POST or None, instance=experience)
@@ -126,6 +133,7 @@ def experience_update(request, pk):
     return render(request, 'myapp/experience_form.html', {'form': form})
 
 
+@login_required
 @require_POST
 def experience_delete(request, pk):
     experience = get_object_or_404(Experience, pk=pk)
@@ -133,17 +141,20 @@ def experience_delete(request, pk):
     return redirect('myapp:experience_list')
 
 
+@login_required
 def resume_list(request):
     resumes = Resume.objects.all()
     return render(request, 'myapp/resume_list.html', {'resume_list': resumes})
 
 
 # Resume Views
+@login_required
 def resume_detail(request, pk):
     resume = get_object_or_404(Resume, pk=pk)
     return render(request, 'myapp/resume_detail.html', {'resume': resume})
 
 
+@login_required
 def resume_create(request):
     if request.method == 'POST':
         form = ResumeForm(request.POST)
@@ -155,6 +166,7 @@ def resume_create(request):
     return render(request, 'myapp/resume_form.html', {'form': form})
 
 
+@login_required
 def resume_update(request, pk):
     resume = get_object_or_404(Resume, pk=pk)
     form = ResumeForm(request.POST or None, instance=resume)
@@ -164,39 +176,40 @@ def resume_update(request, pk):
     return render(request, 'myapp/resume_form.html', {'form': form})
 
 
+@login_required
 def download_resume(request, pk):
     resume = get_object_or_404(Resume, pk=pk)
-    html_string = render_to_string('myapp/resume_detail.html', {'resume': resume})
-
+    html = render_to_string('myapp/resume_detail.html', {'resume': resume})
     options = {
-        'no-images': '',
-        'no-external-links': '',
         'page-size': 'Letter',
         'encoding': 'UTF-8',
         'dpi': 400
     }
     path_to_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
     config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
-
-    pdf = pdfkit.from_string(html_string, False, configuration=config)
-
+    pdf = pdfkit.from_string(html, False, options, configuration=config)
     response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="resume.pdf"'
+    filename = "resume.pdf"
+    response['Content-Disposition', filename] = 'attachment'
+
     return response
 
 
+@login_required
 @require_POST
 def resume_delete(request, pk):
     resume = get_object_or_404(Resume, pk=pk)
     resume.delete()
-    return redirect('myapp:resume_list')  # Assuming you have a view to list resumes
+    return redirect('myapp:resume_list')
 
 
+@login_required
 def skill_list(request):
     skills = Skill.objects.all()
     return render(request, 'myapp/skill_list.html', {'skill_list': skills})
 
 
+@login_required
 def skill_create(request):
     if request.method == 'POST':
         form = SkillForm(request.POST)
@@ -208,6 +221,7 @@ def skill_create(request):
     return render(request, 'myapp/skill_form.html', {'form': form})
 
 
+@login_required
 def skill_update(request, pk):
     skill = get_object_or_404(Skill, pk=pk)
     if request.method == 'POST':
@@ -220,6 +234,7 @@ def skill_update(request, pk):
     return render(request, 'myapp/skill_form.html', {'form': form})
 
 
+@login_required
 def skill_delete(request, pk):
     skill = get_object_or_404(Skill, pk=pk)
     if request.method == 'POST':
@@ -228,11 +243,13 @@ def skill_delete(request, pk):
     return render(request, 'myapp/skill_confirm_delete.html', {'object': skill})
 
 
+@login_required
 def category_list(request):
     categories = Category.objects.all()
     return render(request, 'myapp/category_list.html', {'category_list': categories})
 
 
+@login_required
 def category_create(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -244,6 +261,7 @@ def category_create(request):
     return render(request, 'myapp/category_form.html', {'form': form})
 
 
+@login_required
 def category_update(request, pk):
     category = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
@@ -256,6 +274,7 @@ def category_update(request, pk):
     return render(request, 'myapp/category_form.html', {'form': form})
 
 
+@login_required
 def category_delete(request, pk):
     category = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
@@ -264,11 +283,13 @@ def category_delete(request, pk):
     return render(request, 'myapp/category_confirm_delete.html', {'object': category})
 
 
+@login_required
 def project_list(request):
     projects = Project.objects.all()
     return render(request, 'myapp/project_list.html', {'project_list': projects})
 
 
+@login_required
 def project_create(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
@@ -280,11 +301,13 @@ def project_create(request):
     return render(request, 'myapp/project_form.html', {'form': form})
 
 
+@login_required
 def project_detail(request, pk):
     project = get_object_or_404(Project, pk=pk)
     return render(request, 'myapp/project_detail.html', {'project': project})
 
 
+@login_required
 def project_update(request, pk):
     project = get_object_or_404(Project, pk=pk)
     if request.method == 'POST':
@@ -297,9 +320,10 @@ def project_update(request, pk):
     return render(request, 'myapp/project_form.html', {'form': form})
 
 
+@login_required
 def project_delete(request, pk):
     project = get_object_or_404(Project, pk=pk)
     if request.method == 'POST':
         project.delete()
-        return redirect('myapp:project_list')  # Include the namespace if you have one
+        return redirect('myapp:project_list')
     return render(request, 'myapp/project_confirm_delete.html', {'object': project})

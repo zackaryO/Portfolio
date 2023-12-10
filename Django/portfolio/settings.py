@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'myapp',
+    'users',
     'corsheaders',
     'rest_framework',
     'django.contrib.admin',
@@ -145,3 +146,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+LOGIN_REDIRECT_URL = 'portfolio:home'
+LOGIN_URL = 'login'
